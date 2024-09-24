@@ -24,7 +24,7 @@ First of all, make sure your environment meets the following requirements:
 Then, you should be able to install this library using Composer:
 
 ```
-composer require josemmo/einvoicing
+composer require charkoulis/einvoicing
 ```
 
 ## Usage
