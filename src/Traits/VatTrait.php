@@ -6,6 +6,28 @@ trait VatTrait {
     protected $vatRate = null;
     protected $vatExemptionReasonCode = null;
     protected $vatExemptionReason = null;
+    protected $vatAmount = null;
+
+    /**
+     * Get VAT category code
+     * @return string VAT category code
+     */
+    public function getVatAmount(): ?float {
+        return $this->vatAmount;
+    }
+
+
+    /**
+     * Set VAT amount
+     * @param  string $categoryCode VAT category code
+     * @return self                 This instance
+     */
+    public function setVatAmount(float $vatAmount): self {
+        $this->vatAmount = $vatAmount;
+        return $this;
+    }
+
+
 
     /**
      * Get VAT category code

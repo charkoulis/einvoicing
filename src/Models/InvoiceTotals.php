@@ -123,11 +123,12 @@ class InvoiceTotals {
 
         // Calculate VAT amounts
         foreach ($vatMap as $item) {
-            $item->taxableAmount = $inv->round($item->taxableAmount, 'invoice/allowancesChargesAmount');
-            $item->taxAmount = $inv->round($item->taxableAmount * ($item->rate / 100), 'invoice/vatAmount');
+            // $item->taxableAmount = $inv->round($item->taxableAmount, 'invoice/allowancesChargesAmount');
+            // $item->taxAmount = $inv->round($item->taxableAmount * ($item->rate / 100), 'invoice/vatAmount');
             $totals->vatAmount += $item->taxAmount;
         }
         $totals->vatAmount = $inv->round($totals->vatAmount, 'invoice/vatAmount');
+
 
         // Add custom VAT amount
         $totals->customVatAmount = $inv->getCustomVatAmount();
@@ -189,5 +190,6 @@ class InvoiceTotals {
 
         // Increase taxable amount
         $vatMap[$key]->taxableAmount += $addTaxableAmount;
+        $vatMap[$key]->taxAmount += (($item->getVatAmount() ?? 0.0) * $item->getQuantity());
     }
 }
